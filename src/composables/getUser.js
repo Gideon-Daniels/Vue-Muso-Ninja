@@ -1,10 +1,11 @@
 import { ref } from 'vue'
 import { projectAuth } from '../firebase/config'
 
+//refs
 const user = ref(projectAuth.currentUser)
 
 // listen to state changes
-projectAuth.onAuthStateChanged((_user) => {
+projectAuth.onAuthStateChanged(_user => {
     console.log('User state change. Current user is: ', _user)
     user.value = _user
 })
