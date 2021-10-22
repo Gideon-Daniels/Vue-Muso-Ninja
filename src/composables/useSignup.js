@@ -10,11 +10,11 @@ const signup = async (email, password, displayName) => {
     isPending.value = true
 
     try{
+        console.log(email, password)
         // sign use on to firebase , send a request
         const res = await projectAuth.createUserWithEmailAndPassword(email, password)        
         if(!res){
-            throw new Error('Could not complete the signup')
-            
+            throw new Error('Could not complete the signup')         
         }
         await res.user.updateProfile({ displayName })
         error.value = null
