@@ -16,7 +16,7 @@
   <!-- song list -->
   <div class="song-list">
     <div v-if="!playlist.songs.length">No songs have been added to this playlist yet.</div>
-    <div class="single-song" v-for="song in playlist.song" :key="song.id">
+    <div class="single-song" v-for="song in playlist.songs" :key="song.id">
       <div class="details">
         <h3>{{ song.title }}</h3>
         <p> {{ song.artist }}</p>
@@ -60,7 +60,7 @@ export default {
 
       const handleClick = async (id) => {
          const songs = playlist.value.songs.filter( (song) => song.id != id)
-         await updateDoc({ songs: songs})
+         await updateDoc({ songs})
       }
 
     return { error, playlist, ownership, handleDelete, handleClick }

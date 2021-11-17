@@ -4,7 +4,7 @@
     <form v-if="showForm" @submit.prevent="handleSubmit">
       <h4>Add a New Song</h4>
       <input type="text" placeholder="Song title" required v-model="title" />
-      <input type="text" placeholder="Song title" required v-model="artist" />
+      <input type="text" placeholder="Song artist" required v-model="artist" />
       <button>Add</button>
     </form>
   </div>
@@ -19,7 +19,7 @@ export default {
     const title = ref("");
     const artist = ref("");
     const showForm = ref(false);
-    const { updateDoc } = useDocument('playlist', props.playlist.id)
+    const { updateDoc } = useDocument('playlists', props.playlist.id)
 
     const handleSubmit = async () => {
       const newSong = {
@@ -32,6 +32,7 @@ export default {
       })
       title.value = ""
       artist.value = ""
+      showForm.value = false
     };
 
     return { title, artist, showForm, handleSubmit };
